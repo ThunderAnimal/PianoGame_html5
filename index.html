@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Piano - Kill App</title>
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/piano.css" rel="stylesheet">
+</head>
+<body style="background: #CCCCCC;padding-top: 50px">
+<div class="container" style="background: #FFFFFF">
+	<div class="col-sm-8">
+		<div class="piano">
+			<div class="pianoBody">
+				<div class="littleRedLine"></div>
+				<div class="octave">
+					<div id="white1" class="key white"></div>
+					<div id="white2" class="key white"></div>
+					<div id="white3" class="key white"></div>
+					<div id="white4" class="key white"></div>
+					<div id="white5" class="key white"></div>
+					<div id="white6" class="key white"></div>
+					<div id="white7" class="key white"></div>
+					<div class="flats">
+						<div id="black1" class="key black"></div>
+						<div id="black2" class="key black"></div>
+						<div id="black3" class="key black"></div>
+						<div id="black4" class="key black"></div>
+						<div id="black5" class="key black"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-4 col-sm-offset-0 col-xs-6 col-xs-offset-3">
+		<div class="pianoGameInfo">
+			<div class="startPianoGame">
+				<button class="btn btn-primary">Übung starten</button>
+				<p class="well">
+					Drücke die passende Taste zur angezeigten Note. <br>
+					Viel Spaß beim Noten lesen lernen.
+				</p>
+			</div>
+
+			<div class="endPianoGame" style="display: none">
+				<p class="alert-info"> Ergebnis: <br>
+					Du hast <span class="result"></span> von <span class="rounds"></span> richtig erkannt. <br>
+					Benötigte Zeit: <span class="resultTime"> </span> Sekunden <br>
+					Weiter so!
+				</p>
+				<button class="btn btn-primary">Übung erneut starten</button>
+			</div>
+			<div class="notePianoGame" style="display: none">
+				<img src="" class="img-rounded img-responsive">
+			</div>
+		</div>
+	</div>
+
+</div>
+
+</body>
+</html>
+<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/piano.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	var oPianoControll = new PianoController();
+
+	$('.key').mousedown(function (evt){
+		oPianoControll.pressPianoBtn(this.id)
+	});
+	$('.startPianoGame .btn').click(function (e) {
+		oPianoControll.startGame();
+	});
+	$('.endPianoGame .btn').click(function () {
+		oPianoControll.startGame();
+	});
+});
+</script>
