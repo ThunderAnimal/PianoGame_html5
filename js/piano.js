@@ -1,13 +1,13 @@
 /**
  * Created by InSane on 13.08.2016.
  */
-function PianoController () {
+function PianoController (imgSrc, soundSrc) {
     var oNoteAllList = {};
     var oPianoGame = {};
     var oPianoSimple = {};
     var isPressed = false;
-    var imgPath = "./img/note";
-    var soundPath = "./sound";
+    var imgPath = imgSrc;
+    var soundPath = soundSrc;
 
     var init = function () {
         oNoteAllList = new NoteAllList(imgPath, soundPath);
@@ -76,14 +76,12 @@ function PianoController () {
                     showErrPress(buttonId, oPianoGame.getCorrectPres());
                 }
             },500);
-
         }else {
             new Audio(oPianoSimple.getNoteById(buttonId).soundUrl).play();
             setTimeout(function () {
                 button.removeClass('pressed');
                 isPressed = false;
             }, 500);
-
         }
 
     };
@@ -93,7 +91,6 @@ function PianoController () {
         $('.notePianoGame').show();
         setViewNextRound(oPianoGame.startGame(10, oNoteAllList));
     };
-
     init();
 }
 
@@ -170,6 +167,7 @@ function PianoGame() {
         gameRunning = true;
         points = 0;
         countRounds = rounds;
+        currentRound = 0;
 
         //Build Random NoteList
         if(rounds > oNoteListAll.count()){

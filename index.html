@@ -64,7 +64,7 @@
 <script type="text/javascript" src="js/piano.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-	var oPianoControll = new PianoController();
+	var oPianoControll = new PianoController("./img/note", "./sound");
 
 	$('.key').mousedown(function (evt){
 		oPianoControll.pressPianoBtn(this.id)
